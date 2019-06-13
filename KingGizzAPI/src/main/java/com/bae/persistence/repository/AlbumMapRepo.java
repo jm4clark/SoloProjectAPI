@@ -1,35 +1,48 @@
 package com.bae.persistence.repository;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.enterprise.inject.Alternative;
+
+import com.bae.persistence.domain.Album;
+import com.bae.util.JSONUtil;
+
+@Alternative
 public class AlbumMapRepo implements AlbumRepository {
 
+	private Map<Integer, Album> albumMap = new HashMap<>();
+	
+	private JSONUtil util = new JSONUtil();
+	
 	@Override
 	public String getAllAlbums() {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(albumMap);
 	}
 
 	@Override
 	public String getAnAlbum(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(albumMap.get(id));
 	}
 
 	@Override
 	public String createAlbum(String album) {
-		// TODO Auto-generated method stub
-		return null;
+		Album newAlbum = util.getObjectForJSON(album, Album.class);
+		albumMap.put(newAlbum.getId(), newAlbum);
+		return util.messageToJSON("Album successfully created!");
 	}
 
 	@Override
 	public String deleteAlbum(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		albumMap.remove(id);
+		return util.messageToJSON("Album successfully deleted!");
 	}
 
 	@Override
 	public String updateAlbum(int id, String album) {
-		// TODO Auto-generated method stub
-		return null;
+		Album newAlbum = util.getObjectForJSON(album, Album.class);
+		albumMap.put(id, newAlbum);
+		return util.messageToJSON("Album successfully updated!");
 	}
 
 }
