@@ -1,5 +1,3 @@
-INSERT INTO ACCOUNT (id, accountNumber, firstName, lastName) VALUES (1, '1','John', 'Doe')
-INSERT INTO ACCOUNT (id, accountNumber, firstName, lastName) VALUES (2, '2','Jill', 'Doe')
-INSERT INTO ACCOUNT (id, accountNumber, firstName, lastName) VALUES (3, '3','Jane', 'Smith')
-INSERT INTO ACCOUNT (id, accountNumber, firstName, lastName) VALUES (4, '4','Jack', 'Dunn')
+INSERT INTO ALBUM (id, name) VALUES (1, 'Nonagon Infinity')
+INSERT INTO SONG (id, name) VALUES (1, 'Robot Stop')
 
