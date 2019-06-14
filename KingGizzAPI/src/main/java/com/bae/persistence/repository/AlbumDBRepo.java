@@ -34,9 +34,7 @@ public class AlbumDBRepo implements AlbumRepository {
 	}
 
 	@Override
-	public String deleteAlbum(int id) {
-		Album a = util.getObjectForJSON(getAnAlbum(id), Album.class);
-		
+	public String deleteAlbum(int id) {		
 		if(manager.contains(manager.find(Album.class, id))) {
 			manager.remove(manager.find(Album.class, id));
 		}
