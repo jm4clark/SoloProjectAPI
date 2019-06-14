@@ -1,13 +1,20 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.Song;
 import com.bae.util.JSONUtil;
 
+@Transactional(SUPPORTS)
+@Default
 public class SongDBRepo implements SongRepository{
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
@@ -17,7 +24,7 @@ public class SongDBRepo implements SongRepository{
 
 	@Override
 	public String getAllSongs() {
-		Query query = manager.createQuery("Selec a FROM Song a");
+		Query query = manager.createQuery("Select a FROM Song a");
 		return util.getJSONForObject(query.getResultList());
 	}
 
@@ -27,6 +34,7 @@ public class SongDBRepo implements SongRepository{
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String createSong(String song) {
 		Song a = util.getObjectForJSON(song,  Song.class);
 		manager.persist(a);
@@ -34,6 +42,7 @@ public class SongDBRepo implements SongRepository{
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String deleteSong(int id) {		
 		if(manager.contains(manager.find(Song.class, id))) {
 			manager.remove(manager.find(Song.class, id));
@@ -43,6 +52,7 @@ public class SongDBRepo implements SongRepository{
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String updateSong(int id, String song) {
 		Song newSong = util.getObjectForJSON(song, Song.class);
 		Song oldSong = manager.find(Song.class, id);
