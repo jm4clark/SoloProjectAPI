@@ -22,6 +22,14 @@ public class AlbumDBRepo implements AlbumRepository {
 
 	@Inject
 	private JSONUtil util;
+	
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+	
+	public void setJSON(JSONUtil util) {
+		this.util = util;
+	}
 
 	@Override
 	public String getAllAlbums() {
