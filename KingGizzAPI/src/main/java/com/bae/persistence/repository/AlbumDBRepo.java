@@ -17,7 +17,7 @@ public class AlbumDBRepo implements AlbumRepository {
 
 	@Override
 	public String getAllAlbums() {
-		Query query = manager.createQuery("Selec a FROM Album a");
+		Query query = manager.createQuery("Select a FROM Album a");
 		return util.getJSONForObject(query.getResultList());
 	}
 

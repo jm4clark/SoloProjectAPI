@@ -17,7 +17,7 @@ public class SongDBRepo implements SongRepository{
 
 	@Override
 	public String getAllSongs() {
-		Query query = manager.createQuery("Selec a FROM Song a");
+		Query query = manager.createQuery("Select a FROM Song a");
 		return util.getJSONForObject(query.getResultList());
 	}
 
