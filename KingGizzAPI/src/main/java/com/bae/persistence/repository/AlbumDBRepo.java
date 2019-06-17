@@ -1,14 +1,22 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.Album;
 import com.bae.util.JSONUtil;
 
+@Transactional(SUPPORTS)
+@Default
 public class AlbumDBRepo implements AlbumRepository {
+	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
@@ -27,34 +35,37 @@ public class AlbumDBRepo implements AlbumRepository {
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String createAlbum(String album) {
-		Album a = util.getObjectForJSON(album,  Album.class);
+		Album a = util.getObjectForJSON(album, Album.class);
 		manager.persist(a);
 		return util.messageToJSON("album successfully added");
 	}
 
 	@Override
-	public String deleteAlbum(int id) {		
-		if(manager.contains(manager.find(Album.class, id))) {
+	@Transactional(REQUIRED)
+	public String deleteAlbum(int id) {
+		if (manager.contains(manager.find(Album.class, id))) {
 			manager.remove(manager.find(Album.class, id));
 		}
-		
+
 		return util.messageToJSON("album successfully deleted");
 	}
 
 	@Override
+	@Transactional(REQUIRED)
 	public String updateAlbum(int id, String album) {
 		Album newAlbum = util.getObjectForJSON(album, Album.class);
 		Album oldAlbum = manager.find(Album.class, id);
-		
-		if(oldAlbum != null) {
-			
+
+		if (oldAlbum != null) {
+
 			oldAlbum.setName(newAlbum.getName());
-			//other attributes here
-			
+			// other attributes here
+
 			manager.persist(oldAlbum);
 		}
-		
+
 		return util.messageToJSON("album successfully updated");
 	}
 
