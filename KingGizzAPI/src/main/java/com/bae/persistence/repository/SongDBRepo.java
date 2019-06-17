@@ -37,7 +37,7 @@ public class SongDBRepo implements SongRepository{
 	@Transactional(REQUIRED)
 	public String createSong(String song) {
 		Song a = util.getObjectForJSON(song,  Song.class);
-		manager.persist(a);
+		manager.merge(a);
 		return util.messageToJSON("Song successfully added");
 	}
 
