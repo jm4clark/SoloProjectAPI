@@ -12,6 +12,7 @@ public class Album {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String releaseDate;
 	//private Genre genre;
 	//private Song[] songs;
 	//private Review[] reviews;
@@ -35,6 +36,14 @@ public class Album {
 	
 	public void settId(int id) {
 		this.id = id;
+	}
+
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 }
