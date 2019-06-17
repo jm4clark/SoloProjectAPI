@@ -19,9 +19,10 @@ public class Album {
 	
 	public Album() {}
 	
-	public Album(int id, String name) {
+	public Album(int id, String name, String releaseDate) {
 		this.id = id;
 		this.name = name;
+		this.releaseDate = releaseDate;
 	}
 	
 	public String getName() {
