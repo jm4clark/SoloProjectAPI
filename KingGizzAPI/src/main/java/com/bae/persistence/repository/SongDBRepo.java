@@ -46,9 +46,10 @@ public class SongDBRepo implements SongRepository{
 	public String deleteSong(int id) {		
 		if(manager.contains(manager.find(Song.class, id))) {
 			manager.remove(manager.find(Song.class, id));
+			return util.messageToJSON("Song successfully deleted");
 		}
 		
-		return util.messageToJSON("Song successfully deleted");
+		return util.messageToJSON("no song to be deleted");
 	}
 
 	@Override
@@ -60,11 +61,12 @@ public class SongDBRepo implements SongRepository{
 		if(oldSong != null) {
 			
 			oldSong.setName(newSong.getName());
-			//other attributes here
+			oldSong.setAlbumID(newSong.getAlbumID());
 			
 			manager.persist(oldSong);
+			return util.messageToJSON("Song successfully updated");
 		}
 		
-		return util.messageToJSON("Song successfully updated");
+		return util.messageToJSON("no song to update");
 	}
 }

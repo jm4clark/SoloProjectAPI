@@ -16,7 +16,7 @@ import com.bae.util.JSONUtil;
 @Transactional(SUPPORTS)
 @Default
 public class AlbumDBRepo implements AlbumRepository {
-	
+
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
@@ -47,9 +47,10 @@ public class AlbumDBRepo implements AlbumRepository {
 	public String deleteAlbum(int id) {
 		if (manager.contains(manager.find(Album.class, id))) {
 			manager.remove(manager.find(Album.class, id));
+			return util.messageToJSON("album successfully deleted");
 		}
+		return util.messageToJSON("no album to delete");
 
-		return util.messageToJSON("album successfully deleted");
 	}
 
 	@Override
@@ -64,9 +65,10 @@ public class AlbumDBRepo implements AlbumRepository {
 			// other attributes here
 
 			manager.persist(oldAlbum);
+			return util.messageToJSON("album successfully updated");
 		}
 
-		return util.messageToJSON("album successfully updated");
+		return util.messageToJSON("no album to update");
 	}
 
 }

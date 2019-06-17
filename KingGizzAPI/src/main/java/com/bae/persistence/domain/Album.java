@@ -18,7 +18,8 @@ public class Album {
 	
 	public Album() {}
 	
-	public Album(String name) {
+	public Album(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 	
@@ -30,6 +31,10 @@ public class Album {
 	}
 	public int getId() {
 		return id;
+	}
+	
+	public void settId(int id) {
+		this.id = id;
 	}
 
 }
