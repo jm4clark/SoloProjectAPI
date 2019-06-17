@@ -38,7 +38,7 @@ public class AlbumDBRepo implements AlbumRepository {
 	@Transactional(REQUIRED)
 	public String createAlbum(String album) {
 		Album a = util.getObjectForJSON(album, Album.class);
-		manager.persist(a);
+		manager.merge(a);
 		return util.messageToJSON("album successfully added");
 	}
 
