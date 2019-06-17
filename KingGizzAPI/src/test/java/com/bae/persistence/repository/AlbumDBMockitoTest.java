@@ -18,7 +18,7 @@ import com.bae.persistence.repository.AlbumDBRepo;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AlbumDBMockitoTests {
+public class AlbumDBMockitoTest {
 	
 	@InjectMocks
 	private AlbumDBRepo repo;
