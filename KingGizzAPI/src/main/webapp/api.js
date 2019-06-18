@@ -14,45 +14,36 @@ function makeRequest(requestType, url, sendData) {
     });
 }
 
-function onPressGetAll(object){
+function onPressGetAll(object) {
     let res = getAll(object);
 
     console.log(res.responseText);
 }
 
-function get(id) {
-    let object = "album";
-    let endString = "nAlbum";
-    
-    makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/${object}/getA${endString}/${id}`).then((req) => {
-        console.log("It worked!");
-    }).catch(() => { console.log("Didn't work") });
-}
-
-function getSong(id) {
-    console.log(`http://localhost:8080/KingGizzAPI/api/songs/getASong/${id.value}`);
-
-    makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/songs/getASong/${id.value}`).then((req) => {
+function get(object, id) {
+    let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
+    makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/${object}s/getA${objectEnd}/${id.value}`).then((req) => {
         console.log("It worked!");
         console.log(req.responseText);
     }).catch(() => { console.log("Didn't work") });
 }
 
 function getAll(object) {
-    let objectEnd = object.charAt(0).toUpperCase() + object.substring(1) ;
+    let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
     makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/${object}/getAll${objectEnd}`).then((req) => {
         console.log("It worked!");
         return req.responseText;
     }).catch(() => { console.log("Didn't work") });
 }
 
-function create(object, sendData){
-    makeRequest("POST", `http://localhost:8080/KingGizzAPI/api/${object}/create`, sendData).then((req) => {
+function create(object, sendData) {
+    let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
+    makeRequest("POST", `http://localhost:8080/KingGizzAPI/api/${object}/create${objectEnd}`, sendData).then((req) => {
         console.log("It worked!");
     }).catch(() => { console.log("Didn't work") });
 }
 
 
-function goTo(){
-
+function goTo(address) {
+    window.location.href=`${address}.html`;
 }
