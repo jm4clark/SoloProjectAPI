@@ -16,5 +16,8 @@ div#banner-content {
     margin: 0 auto;
     padding: 10px;
     border: 1px solid #000000;
-    background-color: aquamarine;
+}
+
+div#main-content{
+    padding-top: 70px;
 }
