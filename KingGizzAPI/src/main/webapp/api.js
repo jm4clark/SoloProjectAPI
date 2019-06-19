@@ -1,3 +1,5 @@
+const baseUrl = "http://34.77.53.12:8888/KingGizzAPI/";//"http://localhost:8080/KingGizzAPI/api/";
+
 function makeRequest(requestType, url, sendData) {
     return new Promise((res, rej) => {
         let req = new XMLHttpRequest();
@@ -17,12 +19,12 @@ function makeRequest(requestType, url, sendData) {
 function onPressGetAll(object) {
     let res = getAll(object);
 
-    console.log(res.responseText);
+    console.log(res);
 }
 
 function get(object, id) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/${object}s/getA${objectEnd}/${id.value}`).then((req) => {
+    makeRequest("GET", `${baseUrl}${object}s/getA${objectEnd}/${id.value}`).then((req) => {
         console.log("It worked!");
         console.log(req.responseText);
     }).catch(() => { console.log("Didn't work") });
@@ -30,15 +32,16 @@ function get(object, id) {
 
 function getAll(object) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    makeRequest("GET", `http://localhost:8080/KingGizzAPI/api/${object}/getAll${objectEnd}`).then((req) => {
+    return makeRequest("GET", `${baseUrl}${object}/getAll${objectEnd}`).then((req) => {
+        console.log(`${baseUrl}${object}/getAll${objectEnd}`);
         console.log("It worked!");
-        return req.responseText;
     }).catch(() => { console.log("Didn't work") });
+
 }
 
 function create(object, sendData) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    makeRequest("POST", `http://localhost:8080/KingGizzAPI/api/${object}/create${objectEnd}`, sendData).then((req) => {
+    makeRequest("POST", `${baseUrl}${object}/create${objectEnd}`, sendData).then((req) => {
         console.log("It worked!");
     }).catch(() => { console.log("Didn't work") });
 }
@@ -46,4 +49,8 @@ function create(object, sendData) {
 
 function goTo(address) {
     window.location.href=`${address}.html`;
+}
+
+function fadeOut(){
+
 }

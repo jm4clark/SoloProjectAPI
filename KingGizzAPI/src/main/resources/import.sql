@@ -2,7 +2,7 @@ INSERT INTO ALBUM (id, name, releaseDate) VALUES (1, '12 Bar Bruise', '07-09-201
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (2, 'Eyes Like the Sky', '22-02-2013')
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (3, 'Float Along - Fill Your Lungs', '27-09-2013')
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (4, 'Oddments', '07-03-2014')
-INSERT INTO ALBUM (id, name, releaseDate) VALUES (5, 'I''m in Your Mind Fuzz', '31-10-2014)
+INSERT INTO ALBUM (id, name, releaseDate) VALUES (5, 'I''m in Your Mind Fuzz', '31-10-2014')
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (6, 'Quarters!', '01-05-2015')
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (7, 'Paper Mâché Dream Balloon', '13-11-2015')
 INSERT INTO ALBUM (id, name, releaseDate) VALUES (8, 'Nonagon Infinity', '29-04-2016')

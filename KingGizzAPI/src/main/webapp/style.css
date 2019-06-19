@@ -21,3 +21,26 @@ div#banner-content {
 div#main-content{
     padding-top: 70px;
 }
+
+.visible,
+.hidden {
+  overflow: hidden;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
+.visible > div,
+.hidden > div {
+  /* Put any padding, border, min-height, etc. here. */
+}
+.hidden > div {
+  margin-top: -10000px;
+  transition: margin-top 0s 1s;
+}
