@@ -197,7 +197,7 @@
 				<configuration>
 					<!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
 					<!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
-					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>			
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 			<!-- The WildFly plug-in deploys your WAR to a local WildFly container -->
@@ -225,7 +225,7 @@
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
