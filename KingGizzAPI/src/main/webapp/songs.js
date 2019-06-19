@@ -1,12 +1,12 @@
 function onPressGetAll(object) {
     getAll(object).then((res) => {
-        let s = JSON.parse(res.responseText);
         console.log(res.responseText);
         let songs = JSON.parse(res.responseText);
         for (let s = 0; s < songs.length; s++) {
             console.log("card start");
             console.log(songs[s]);
             cardMaker(songMaker(songs[s]), "resultTable");
+            //fadeInCards("resultTable");
             console.log("card made!");
             console.log("It worked!");
         }
@@ -17,10 +17,11 @@ function onPressGetAllByAlbumID(object, aID) {
     getAll(object).then((res) => {
         let songs = JSON.parse(res.responseText);
 
-        for (s in songs) {
+        for (let i = 0; i < songs.length; i++){
+            let s = songs[i];
             if (s.albumID === aID) {
-                console.log(s.id.value + s.name.value + s.albumID.value);
-                cardMaker(songMaker(s.id, s.name, s.albumID), resultTable);
+                console.log(s);
+                cardMaker(songMaker(s), "resultTable");
                 console.log("card");
             }
         }
@@ -57,6 +58,13 @@ function cardMaker(song, id) {
                     </div>
                     </div>
                 </div>`;
-                console.log(card);
     document.getElementById(id).appendChild(card);
+}
+
+function fadeInCards(id) {
+    let children = id.children;
+    for(let i = 0; i < children.length; i++){
+        let child = children[i];
+        child.fadeIn("slow");
+    }
 }
