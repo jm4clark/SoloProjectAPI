@@ -1,4 +1,4 @@
-const baseUrl = "http://34.77.53.12:8888/KingGizzAPI/api";//"http://localhost:8080/KingGizzAPI/api/";
+const baseUrl = "http://34.77.53.12:8888/KingGizzAPI/api/"; //""http://localhost:8080/KingGizzAPI/api/";
 
 function makeRequest(requestType, url, sendData) {
     return new Promise((res, rej) => {
@@ -35,7 +35,7 @@ function get(object, id) {
 
 function getAll(object) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    return makeRequest("GET", `${baseUrl}${object}/getAll${objectEnd}`).then((req) => {
+    makeRequest("GET", `${baseUrl}${object}/getAll${objectEnd}`).then((req) => {
         console.log(`${baseUrl}${object}/getAll${objectEnd}`);
         console.log("It worked!");
     }).catch(() => { console.log("Didn't work") });
