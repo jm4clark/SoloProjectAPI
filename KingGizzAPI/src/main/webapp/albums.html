@@ -21,14 +21,16 @@
         </div>
     </div>
     <div id="main-content">
-        <button onclick="onPressGetAll('songs')">Get all songs</button> <br>
-        <input type="number" id="num1" value=1></input><button onclick="get('song', num1)">get song</button><br><br>
+        <button onclick="onPressGetAll('albums')">Get all albums</button>
+        <input type="number" id="num1" value=1></input><button onclick="get('album', num1)">get
+            album</button><br><br>
+        <p id="albumName">Album name</p>
+        <img id="albumArt"></image>
+        <br>
         <button onclick="goTo('index')">Home</button>
-
-        <div class="row" id="resultTable"></div>
     </div>
 </body>
 <script src="api.js"></script>
-<script src="songs.js"></script>
+
 
 </html>

@@ -1,21 +1,10 @@
+h2{
+    text-align: center;
+}
+
 * {
     margin: 0;
     padding : 0;
-}
-
-div#banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: greenyellow;
-}
-
-div#banner-content {
-    width: 800px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #000000;
 }
 
 div#main-content{
@@ -44,3 +33,30 @@ div#main-content{
   margin-top: -10000px;
   transition: margin-top 0s 1s;
 }
+
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  img:hover {
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+
+  div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  
+  
+  div.scrollmenu a:hover {
+    background-color: #777;
+  }

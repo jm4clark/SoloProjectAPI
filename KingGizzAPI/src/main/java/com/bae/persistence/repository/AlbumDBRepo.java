@@ -70,9 +70,11 @@ public class AlbumDBRepo implements AlbumRepository {
 		if (oldAlbum != null) {
 
 			oldAlbum.setName(newAlbum.getName());
+			oldAlbum.setReleaseDate(newAlbum.getReleaseDate());
+			oldAlbum.setAlbumArtLink(newAlbum.getAlbumArtLink());
 			// other attributes here
 
-			manager.persist(oldAlbum);
+			manager.merge(oldAlbum);
 			return util.messageToJSON("album successfully updated");
 		}
 
