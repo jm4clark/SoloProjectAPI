@@ -1,4 +1,4 @@
-const baseUrl = "http://34.77.53.12:8888/KingGizzAPI/";//"http://localhost:8080/KingGizzAPI/api/";
+const baseUrl = "http://34.77.53.12:8888/KingGizzAPI/api";//"http://localhost:8080/KingGizzAPI/api/";
 
 function makeRequest(requestType, url, sendData) {
     return new Promise((res, rej) => {
@@ -24,6 +24,9 @@ function onPressGetAll(object) {
 
 function get(object, id) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
+    if(objectEnd.charAt(0) === 'a' || objectEnd.charAt(0) === 'e' || objectEnd.charAt(0) === 'i' || objectEnd.charAt(0) === 'o' || objectEnd.charAt(0) === 'u'){ //if object starts with a vowel
+        objectEnd = 'n' + objectEnd; //change 'get A ___' to 'get An ___'
+    }
     makeRequest("GET", `${baseUrl}${object}s/getA${objectEnd}/${id.value}`).then((req) => {
         console.log("It worked!");
         console.log(req.responseText);
