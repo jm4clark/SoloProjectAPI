@@ -13,16 +13,18 @@ public class Album {
 	private int id;
 	private String name;
 	private String releaseDate;
+	private String albumArtLink;
 	//private Genre genre;
 	//private Song[] songs;
 	//private Review[] reviews;
 	
 	public Album() {}
 	
-	public Album(int id, String name, String releaseDate) {
+	public Album(int id, String name, String releaseDate, String albumArtLink) {
 		this.id = id;
 		this.name = name;
 		this.releaseDate = releaseDate;
+		this.albumArtLink = albumArtLink;
 	}
 	
 	public String getName() {
@@ -45,6 +47,14 @@ public class Album {
 
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+
+	public String getAlbumArtLink() {
+		return albumArtLink;
+	}
+
+	public void setAlbumArtLink(String albumArtLink) {
+		this.albumArtLink = albumArtLink;
 	}
 
 }

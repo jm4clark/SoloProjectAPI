@@ -32,8 +32,8 @@ public class AlbumDBMockitoTest {
 	@Mock
 	private JSONUtil util;
 
-	public static final Album ALBUM_ONE = new Album(1, "Nonagon Infinity", "whenever");
-	public static final Album ALBUM_TWO = new Album(2, "Quarters!", "awhileago");
+	public static final Album ALBUM_ONE = new Album(1, "Nonagon Infinity", "whenever", "https://images-na.ssl-images-amazon.com/images/I/81OzrxuWtGL._SY355_.jpg");
+	public static final Album ALBUM_TWO = new Album(2, "Quarters!", "awhileago", "https://f4.bcbits.com/img/a3796441552_10.jpg");
 
 	@Before
 	public void setup() {
