@@ -1,6 +1,8 @@
+const searchResults = ["songs", "albums"];
+
 function onLoadFunc() {
-    addAlbumsToDropDown().then((res)=>{
-console.log("add albums");
+    addAlbumsToDropDown().then((res) => {
+        //console.log("added albums to dropdown");
     });
 }
 
@@ -15,16 +17,13 @@ function addAlbumsToDropDown() {
     });
 }
 
-function dropDownMaker(albumName){
+function dropDownMaker(albumName) {
     let drop = document.createElement("li");
-    drop.innerHTML = `<li><a tabindex="-1" href="#">${albumName}</a></li>`;
+    drop.innerHTML = `<li><a tabindex="-1" href="#" class="dropdown-item">${albumName}</a></li>`;
 
     let divider = document.createElement("div");
     divider.innerHTML = `<div class="dropdown-divider"></div>`;
 
-    console.log("made dropdown!");
     document.getElementById("albumdropdown").appendChild(divider);
     document.getElementById("albumdropdown").appendChild(drop);
-    
-    console.log("appended dropdown!");
 }

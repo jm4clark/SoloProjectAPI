@@ -30,8 +30,8 @@ function getAll(object) {
 
 function get(object, id) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    if (objectEnd.charAt(0) === 'A' || objectEnd.charAt(0) === 'E' || objectEnd.charAt(0) === 'I' || 
-            objectEnd.charAt(0) === 'O' || objectEnd.charAt(0) === 'U') { //if object starts with a vowel...
+    if (objectEnd.charAt(0) === 'A' || objectEnd.charAt(0) === 'E' || objectEnd.charAt(0) === 'I' ||
+        objectEnd.charAt(0) === 'O' || objectEnd.charAt(0) === 'U') { //if object starts with a vowel...
         objectEnd = 'n' + objectEnd;                                      //...change 'get A ___' to 'get An ___'
     }
     makeRequest("GET", `${baseUrl}${object}s/getA${objectEnd}/${id.value}`).then((req) => {
@@ -70,4 +70,31 @@ function cardMaker(album, id) {
                 </div>
             </div>`;
     document.getElementById(id).appendChild(card);
+}
+
+
+function autocomplete(input, array) {
+    let currFocus;
+
+    input.addEventListener("input", (e) => {
+        var a, b, i, val = this.value;
+
+        closeAllLists();
+        if (!val) {
+            currentFocus = -1;
+            a = document.createElement("div");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+
+            this.parentNode.appendChild(a);
+
+            for (let i = 0; i < array.length; i++) {
+                if( array[i].substring(0, val.length).toUpperCase() == val.toUpperCase()){
+                    b = document.createElement("div");
+                    b.innerHTML = "<strong>" + array[i]
+                }
+            }
+        }
+
+    })
 }
