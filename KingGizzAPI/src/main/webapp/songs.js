@@ -1,5 +1,5 @@
-function onPressGetAll(object) {
-    getAll(object).then((res) => {
+function onPressGetAll() {
+    getAll("songs").then((res) => {
         console.log(res.responseText);
         let songs = JSON.parse(res.responseText);
         for (let s = 0; s < songs.length; s++) {
@@ -67,4 +67,15 @@ function fadeInCards(id) {
         let child = children[i];
         child.fadeIn("slow");
     }
+}
+
+function getAllSongNames(){
+    return getAll("songs").then((res) => {
+        console.log(res.responseText);
+        let songs = JSON.parse(res.responseText);
+        const songNames;
+        for (let s = 0; s < songs.length; s++) {
+            songNames.push(songs[s].name);
+        }
+    }).catch(() => { console.log("Didn't work") });
 }

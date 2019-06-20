@@ -19,7 +19,35 @@
 </head>
 
 <body onload="onLoadFunc()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">King Gizzard and the Lizard Wizard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a tabindex="-1" href="songs.html">Songs</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Albums<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="albums.html">All albums</a></li>
+                                <li><a tabindex="-1" href="#">Nonagon Infinity</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </div>
+    </nav>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">King Gizzard and the Lizard Wizard</a>
@@ -33,21 +61,28 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Options
                     </a>
-                    <div class="dropdown-submenu" aria-labelledby="navbarDropdown">
-                <li><a tabindex="-1" href="#" onclick="goTo('albums')">All Albums</a></li>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" onclick="goTo('songs')">Songs</a>
-        </div>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"></a>
+                        <a class="test" tabindex="-1" href="#">Albums<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="albums.html">All albums</a></li>
+                            <li><a tabindex="-1" href="#">Nonagon Infinity</a></li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
+    
+
     <div id="main-content">
         <div id="banner">
             <div id="banner-content">
@@ -57,6 +92,7 @@
         </div>
 
     </div>
+
 </body>
 <script>
     $(document).ready(function () {

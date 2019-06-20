@@ -13,7 +13,7 @@
 </link>
 
 <head>
-    <title>King Gizzard and the Lizard Wizard - Albums</title>
+    <title>Albums</title>
 </head>
 
 <link rel="stylesheet" href="style.css" type="text/css">
@@ -40,13 +40,15 @@
         </div>
     </nav>
     <div id="main-content">
-        <button onclick="onPressGetAll('albums')">Get all albums</button>
-        <input type="number" id="num1" value=1></input><button onclick="get('album', num1)">get album</button>
-        <br><br>
-        <p id="albumName">Album name</p>
-        <img id="albumArt"></image>
-        <br>
-        <button onclick="goTo('index')">Home</button>
+        <div id="albumContainer">
+            <button onclick="onPressGetAll('albums')">Get all albums</button>
+            <input type="number" id="num1" value=1></input><button onclick="get('album', num1)">get album</button>
+            <br><br>
+            <p id="albumName">Album name</p>
+            <img id="albumArt"></image>
+            <br>
+            <button onclick="goTo('index')">Home</button>
+        </div>
     </div>
 </body>
 <script src="api.js"></script>
