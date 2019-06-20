@@ -8,28 +8,28 @@ pipeline{
                 }
                 stage('--test--'){
                         steps{
-                                sh "mvn test"
+                                sh "mvn test -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
                 stage('--package--'){
                         steps{
-                                sh "mvn package"
+                                sh "mvn package -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
 		stage('--sonar--'){
                         steps{
-                                sh "mvn sonar:sonar"
+                                sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
 		stage('--verify--'){
                         steps{
-                                sh "mvn verify"
+                                sh "mvn verify -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
 		stage('--surefire--'){
                         steps{
-                                sh "mvn surefire-report:report"
-				sh "mvn site"
+                                sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+				sh "mvn site -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
 		stage('--deploy--'){
