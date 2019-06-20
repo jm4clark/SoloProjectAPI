@@ -36,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp SoloProject/KingGizzAPI/target/KingGizzAPI.war /home/jamesmclark96/scripts/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp /SoloProject/KingGizzAPI/target/KingGizzAPI.war /home/jamesmclark96/scripts/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
