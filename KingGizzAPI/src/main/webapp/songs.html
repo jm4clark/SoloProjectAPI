@@ -12,15 +12,41 @@
     crossorigin="anonymous"></script>
 </link>
 
-<body>
-    <h1>King Gizzard and the Lizard Wizard!!!</h1>
+<link rel="stylesheet" href="style.css" type="text/css">
 
-    <button onclick="onPressGetAll('songs')">Get all songs</button>
-    <p>Acc num:</p><input type="number" id="num1" value=1></input><button onclick="get('song', num1)">get
-        song</button><br><br>
-<button onclick="goTo('index')">Home</button>
+<head>
+        <title>Songs</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">King Gizzard and the Lizard Wizard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="goTo('index')">Home<span class="sr-only" >(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" onsubmit="onSearch('searchinput')">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div id="main-content">
+        <button onclick="onPressGetAllByAlbumID('songs', 8)">Get all songs</button> <br>
+        <input type="number" id="num1" value=1></input><button onclick="get('song', num1)">get song</button><br><br>
+        <button onclick="goTo('index')">Home</button>
+
+        <div class="row" id="resultTable"></div>
+    </div>
 </body>
 <script src="api.js"></script>
-
+<script src="songs.js"></script>
 
 </html>

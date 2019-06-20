@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,19 +15,75 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 
 <head>
-
+    <title>King Gizzard and the Lizard Wizard</title>
 </head>
 
-<body>
-    <div id="banner">
-        <div id="banner-content">
-            <h2 align="center">King Gizzard and the Lizard Wizard!!!</h2>
+<body onload="onLoadFunc()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">King Gizzard and the Lizard Wizard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" tabindex="-1" href="songs.html">Songs</a></li>
+                        <div class="dropdown-divider"></div>
+                        <!-- <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">Albums<span class="caret"></span></a>
+                            <ul class="dropdown-menu" id="albumdropdown1">
+                                <li><a tabindex="-1" href="albums.html" class="dropdown-item">All albums</a></li>
+                            </ul>
+
+                        </li> -->
+                        <button class="btn btn-default dropdown-item" type="button" data-toggle="dropdown" tabindex="-1"
+                            href="#">Albums<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="albumdropdown">
+                            <li><a tabindex="-1" href="albums.html" class="dropdown-item">All albums</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" autocomplete="off">
+                <div class="autocomplete">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        id="indexSearch">
+                </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <script>
+                autocomplete(document.getElementById("indexSearch"), searchResultsIndex);
+            </script>
         </div>
-    </div>
+    </nav>
+
+
     <div id="main-content">
-        <input type="button" onclick="goTo('songs')" value="Songz" />
+        <div id="banner">
+            <div id="banner-content">
+                <input type="button" onclick="goTo('songs')" value="Songz" />
+                <input type="button" onclick="goTo('albums')" value="Albumz" />
+            </div>
+        </div>
+
     </div>
+
 </body>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-submenu a.test').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
 <script src="api.js"></script>
+<script src="index.js"></script>
 
 </html>
