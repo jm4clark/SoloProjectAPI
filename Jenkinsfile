@@ -3,6 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
+				cd SoloProjectAPI/KingGizzAPI/
                                 sh "mvn clean"
                         }
                 }
