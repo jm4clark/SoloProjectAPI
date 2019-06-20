@@ -32,20 +32,21 @@
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="songs.html">Songs</a></li>
+                        <li><a class="dropdown-item" tabindex="-1" href="songs.html">Songs</a></li>
+                        <div class="dropdown-divider"></div>
                         <li class="dropdown-submenu">
                             <a class="test" tabindex="-1" href="#">Albums<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" id="albumdropdown">
                                 <li><a tabindex="-1" href="albums.html">All albums</a></li>
-                                <li><a tabindex="-1" href="#">Nonagon Infinity</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
@@ -68,7 +69,6 @@
                         <a class="test" tabindex="-1" href="#">Albums<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="albums.html">All albums</a></li>
-                            <li><a tabindex="-1" href="#">Nonagon Infinity</a></li>
                         </ul>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -81,7 +81,7 @@
             </form>
         </div>
     </nav>
-    
+
 
     <div id="main-content">
         <div id="banner">
