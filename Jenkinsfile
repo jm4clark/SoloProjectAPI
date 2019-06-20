@@ -3,7 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
-                                sh "mvn clean -f /var/lib/jenkins/workspace/pipeline/SoloProject/"
+                                sh "mvn clean -f /var/lib/jenkins/workspace/pipeline/SoloProject/KingGizzAPI/"
                         }
                 }
                 stage('--test--'){
