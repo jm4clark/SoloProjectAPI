@@ -80,6 +80,11 @@ img {
       margin: 0 auto;
   }
 
+  div#main-content{
+    width:100%;
+    background-color: greenyellow;
+  }
+
   .autocomplete {
     position: relative;
     display: inline-block;
