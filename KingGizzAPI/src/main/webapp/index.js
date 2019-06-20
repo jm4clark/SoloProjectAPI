@@ -1,4 +1,4 @@
-const searchResults = ["songs", "albums"];
+const searchResultsIndex = ["Songs", "Albums"];
 
 function onLoadFunc() {
     addAlbumsToDropDown().then((res) => {
