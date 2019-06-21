@@ -63,6 +63,11 @@ div.scrollmenu a:hover {
     background-color: #777;
 }
 
+img.thumbnail{
+    width: 150px;
+    height: 150px;
+}
+
 div#albumContainer {
     display: table;
     width: 75%;

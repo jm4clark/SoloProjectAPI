@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="goTo('index')">Home<span class="sr-only">(current)</span></a>
+                    <button class="nav-link btn btn-outline-danger my-2 my-sm-0" href="#" onclick="goTo('index')">Home<span class="sr-only">(current)</span></button>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" onsubmit="onSearch('searchinput')">
@@ -72,7 +72,8 @@
                 <label for="album"><b>Album ID</b></label>
                 <input type="number" id="inpCAID" value=1></input>
                 <br><br>
-                <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)" data-toggle="collapse" data-target="#createDiv">Create song</button><br>
+                <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)" data-toggle="collapse"
+                    data-target="#createDiv">Create song</button><br>
                 <hr>
             </div>
         </div>

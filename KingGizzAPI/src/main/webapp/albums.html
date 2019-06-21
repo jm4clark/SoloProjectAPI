@@ -45,15 +45,15 @@
             <h3>Albums</h3>
             <hr>
             <div class="container" style="overflow-y: auto">
-                <h4 data-toggle="collapse" data-target="#getalbums">Find an album</h4>
+                <h4>Find an album</h4>
                 <hr>
-                <div id="getalbums" class="collapse in">
+                <div>
                     <button onclick="onPressGetAll()">Get all albums</button>
-                    <button onclick="removeAllChildren('resultTable')">Clear results</button>
+                    <button onclick="removeAllChildren('albumResultTable')">Clear results</button>
                     <br><br>
                     <input type="number" id="num1" value=1></input>
                     <button type="button" class="btn-default" onclick="onPressGet('album', num1)">Get an album</button><br><br>
-                    <div class="row" id="resultTable"></div>
+                    <div class="row" id="albumResultTable"></div>
                     <br>
                 </div>
             </div>
@@ -142,6 +142,7 @@
     </div>
 </body>
 <script src="api.js"></script>
+<script src="albums.js"></script>
 
 
 </html>

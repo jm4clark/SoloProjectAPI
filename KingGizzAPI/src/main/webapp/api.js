@@ -18,6 +18,7 @@ function makeRequest(requestType, url, sendData) {
 
 function getAll(object) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
+    console.log(`${baseUrl}${object}/getAll${objectEnd}`);
     return makeRequest("GET", `${baseUrl}${object}/getAll${objectEnd}`);
 }
 
@@ -69,4 +70,11 @@ function cardMaker(album, id) {
                 </div>
             </div>`;
     document.getElementById(id).appendChild(card);
+}
+
+function removeAllChildren(id) {
+    let result = document.getElementById(id);
+    while (result.hasChildNodes()) {
+        result.removeChild(result.firstChild);
+    }
 }

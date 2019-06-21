@@ -141,12 +141,6 @@ function youtubePopup(songName, songYoutubeLink) {
     document.getElementById("modalBodySong").appendChild(video);
 }
 
-function removeAllChildren(id) {
-    let result = document.getElementById(id);
-    while (result.hasChildNodes()) {
-        result.removeChild(result.firstChild);
-    }
-}
 
 function getAllSongNames() {
     return getAll("songs").then((res) => {
