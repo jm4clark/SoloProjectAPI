@@ -34,7 +34,7 @@ pipeline{
 		stage('--surefire--'){
                         steps{
                                 sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
-				sh "mvn site -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+				sh "mvn site -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
 		stage('--deploy--'){
