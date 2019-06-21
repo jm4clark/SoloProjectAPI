@@ -32,21 +32,24 @@ function get(object, id) {
 
 function create(object, sendData) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    return makeRequest("POST", `${baseUrl}${object}/create${objectEnd}`, sendData).then((req) => {
+    console.log(`${baseUrl}${object}s/create${objectEnd}`);
+    return makeRequest("POST", `${baseUrl}${object}s/create${objectEnd}`, sendData)
+    .then((req) => {
         console.log("It worked!");
     }).catch(() => { console.log("Didn't work") });
 }
 
 function update(object, id, sendData) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    return makeRequest("PUT",  `${baseUrl}${object}/update${objectEnd}/${id}`, sendData).then((req) => {
-        console.log("It worked!");
-    }).catch(() => { console.log("Didn't work") });
+    return makeRequest("PUT",  `${baseUrl}${object}s/update${objectEnd}/${id}`, sendData);
+    // .then((req) => {
+    //     console.log("It worked!");
+    // }).catch(() => { console.log("Didn't work") });
 }
 
 function deleteFunc(object, id){
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    return makeRequest("DELETE",  `${baseUrl}${object}/delete${objectEnd}/${id}`, sendData).then((req) => {
+    return makeRequest("DELETE",  `${baseUrl}${object}s/delete${objectEnd}/${id}`).then((req) => {
         console.log("It worked!");
     }).catch(() => { console.log("Didn't work") });
 }
