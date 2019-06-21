@@ -63,13 +63,13 @@
             <h4 data-toggle="collapse" data-target="#createDiv">Create a song</h4>
             <hr>
             <div id="createDiv" class="collapse">
-                <label for="fname"><b>Song Name</b></label>
+                <label for="fname"><strong>Song Name</strong></label>
                 <input type="text" placeholder="Enter name..." size="50" id="inpCName" required>
                 <br><br>
-                <label for="ytVid"><b>Youtube video</b></label>
+                <label for="ytVid"><strong>Youtube video</strong></label>
                 <input type="text" placeholder="Enter youtube url..." size="100" id="inpCYT" value=''>
                 <br><br>
-                <label for="album"><b>Album ID</b></label>
+                <label for="album"><strong>Album ID</strong></label>
                 <input type="number" id="inpCAID" value=1></input>
                 <br><br>
                 <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)" data-toggle="collapse"
@@ -81,16 +81,16 @@
             <h4 data-toggle="collapse" data-target="#updateDiv">Update a song</h4>
             <hr>
             <div id="updateDiv" class="collapse">
-                <label for="inpID"><b>Song ID</b></label>
+                <label for="inpID"><strong>Song ID</strong></label>
                 <input type="number" placeholder="Enter Account No." id="inpID" value=1 required>
                 <br><br>
-                <label for="inpName"><b>Song Name</b></label>
+                <label for="inpName"><strong>Song Name</strong></label>
                 <input type="text" id="inpName" placeholder="Enter name..." size="50" value="" required>
                 <br><br>
-                <label for="inpYT"><b>Youtube video</b></label>
+                <label for="inpYT"><strong>Youtube video</strong></label>
                 <input type="text" placeholder="Enter youtube url..." size="100" id="inpYT" value=''>
                 <br><br>
-                <label for="album"><b>Album ID</b></label>
+                <label for="album"><strong>Album ID</strong></label>
                 <input type="number" id="albID" value=1></input>
                 <br><br>
                 <button onclick="onPressUpdate(inpID, inpName, inpYT, albID)">Update song</button><br>
@@ -101,7 +101,7 @@
             <h4 data-toggle="collapse" data-target="#deleteDiv">Delete a song</h4>
             <hr>
             <div id="deleteDiv" class="collapse">
-                <label for="id"><b>Song ID</b></label>
+                <label for="id"><strong>Song ID</strong></label>
                 <input type="number" placeholder="Enter Account No." id="DinpID" value=1 required>
                 <button onclick="onPressDelete(DinpID)">Delete song</button><br>
                 <hr>
