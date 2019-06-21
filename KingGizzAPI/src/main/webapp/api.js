@@ -32,7 +32,7 @@ function get(object, id) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
     if (objectEnd.charAt(0) === 'A' || objectEnd.charAt(0) === 'E' || objectEnd.charAt(0) === 'I' ||
         objectEnd.charAt(0) === 'O' || objectEnd.charAt(0) === 'U') { //if object starts with a vowel...
-        objectEnd = 'n' + objectEnd;                                      //...change 'get A ___' to 'get An ___'
+        objectEnd = 'n' + objectEnd;                                  //...change 'get A ___' to 'get An ___'
     }
     makeRequest("GET", `${baseUrl}${object}s/getA${objectEnd}/${id.value}`).then((req) => {
         console.log("It worked!");
@@ -55,11 +55,6 @@ function goTo(address) {
     window.location.href = `${address}.html`;
 }
 
-function fadeOut() {
-
-}
-
-
 function cardMaker(album, id) {
     let card = document.createElement("div");
     card.innerHTML = `<div class="card" style="width: 18rem;">
@@ -71,7 +66,6 @@ function cardMaker(album, id) {
             </div>`;
     document.getElementById(id).appendChild(card);
 }
-
 
 function autocomplete(input, array) {
     let currentFocus;
