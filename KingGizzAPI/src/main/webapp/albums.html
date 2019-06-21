@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-red" style="background-color: rgb(145, 26, 26)">
         <a class="navbar-brand" href="index.html">King Gizzard and the Lizard Wizard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
                 <h4 data-toggle="collapse" data-target="#getalbums">Find an album</h4>
                 <hr>
                 <div id="getalbums" class="collapse in">
-                    <button onclick="onPressGetAll('albums')">Get all albums</button>
+                    <button onclick="onPressGetAll()">Get all albums</button>
                     <button onclick="removeAllChildren('resultTable')">Clear results</button>
                     <br><br>
                     <input type="number" id="num1" value=1></input>

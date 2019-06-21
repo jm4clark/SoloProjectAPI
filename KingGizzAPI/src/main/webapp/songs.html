@@ -43,7 +43,7 @@
     <div class="container" id="main-content">
         <h3>Songs</h3>
         <hr>
-        <div class="container" style="overflow-y: auto">
+        <div class="container">
             <h4 data-toggle="collapse" data-target="#getSongs">Find a song</h4>
             <hr>
             <div id="getSongs" class="collapse in">
@@ -72,7 +72,7 @@
                 <label for="album"><b>Album ID</b></label>
                 <input type="number" id="inpCAID" value=1></input>
                 <br><br>
-                <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)">Create song</button><br>
+                <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)" data-toggle="collapse" data-target="#createDiv">Create song</button><br>
                 <hr>
             </div>
         </div>

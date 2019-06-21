@@ -44,9 +44,9 @@ function onPressGet(object, id) {
 function onPressCreate(name, yt, aid) {
     let song = songMakerVals(0, name.value, aid.value, yt.value);
     console.log(song);
-    create("song", JSON.stringify(song)).then(()=> {
+    create("song", JSON.stringify(song)).then(() => {
         console.log("it worked??");
-    }).catch(() => { console.log("didnt work")});
+    }).catch(() => { console.log("didnt work") });
 }
 
 function onSearchName(name) {
@@ -60,7 +60,7 @@ function onSearchName(name) {
         }
     })
 }
-function onClickUpdateIcon(songID, songName, songYT, songAlbumID){
+function onClickUpdateIcon(songID, songName, songYT, songAlbumID) {
     console.log("onclickupdate");
     console.log(document.getElementById("inpName").value);
     console.log(songName);
@@ -80,7 +80,7 @@ function onPressUpdate(oldID, newName, newYT, newAID) {
 }
 
 function onPressDelete(id) {
-    deleteFunc("song", id.value).then(()=> {
+    deleteFunc("song", id.value).then(() => {
         console.log("It worked!");
     });
 }
@@ -132,10 +132,12 @@ function youtubePopup(songName, songYoutubeLink) {
     console.log(document.getElementById("modalBodySong"));
 
     let video = document.createElement("div");
-    songYoutubeLink = songYoutubeLink.replace("watch?v=", "embed/");
-    songYoutubeLink = songYoutubeLink + "?autoplay=1";
+    if (songYoutubeLink != "") {
+        songYoutubeLink = songYoutubeLink.replace("watch?v=", "embed/");
+        songYoutubeLink = songYoutubeLink + "?autoplay=1";
+    }
     console.log(songYoutubeLink);
-    video.innerHTML = `<div><iframe width="450" height="325" src="${songYoutubeLink}"></iframe></div>`;
+    video.innerHTML = `<div><iframe width="450" height="325" src="${songYoutubeLink}" alt="no video..."></iframe></div>`;
     document.getElementById("modalBodySong").appendChild(video);
 }
 
@@ -143,14 +145,6 @@ function removeAllChildren(id) {
     let result = document.getElementById(id);
     while (result.hasChildNodes()) {
         result.removeChild(result.firstChild);
-    }
-}
-
-function fadeInCards(id) {
-    let children = id.children;
-    for (let i = 0; i < children.length; i++) {
-        let child = children[i];
-        child.fadeIn("slow");
     }
 }
 
