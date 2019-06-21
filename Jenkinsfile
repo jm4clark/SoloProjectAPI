@@ -8,32 +8,32 @@ pipeline{
                 }
                 stage('---clean---'){
                         steps{
-                                sh "mvn clean -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn clean -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
                 stage('--test--'){
                         steps{
-                                sh "mvn test -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn test -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
                 stage('--package--'){
                         steps{
-                                sh "mvn package -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn package -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
 		stage('--sonar--'){
                         steps{
-                                sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
 		stage('--verify--'){
                         steps{
-                                sh "mvn verify -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn verify -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
                         }
                 }
 		stage('--surefire--'){
                         steps{
-                                sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
+                                sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/ProjectPipeline/KingGizzAPI"
 				sh "mvn site -f /var/lib/jenkins/workspace/pipeline/KingGizzAPI"
                         }
                 }
