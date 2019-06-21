@@ -13,6 +13,7 @@ public class Song {
 	private int id;
 	private String name;
 	private int albumID;
+	private String youtubeLink;
 	
 	
 	public Song() {}
@@ -37,6 +38,14 @@ public class Song {
 
 	public void setAlbumID(int albumID) {
 		this.albumID = albumID;
+	}
+
+	public String getYoutubeLink() {
+		return youtubeLink;
+	}
+
+	public void setYoutubeLink(String youtubeLink) {
+		this.youtubeLink = youtubeLink;
 	}
 
 }

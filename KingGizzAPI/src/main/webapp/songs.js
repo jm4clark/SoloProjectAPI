@@ -1,16 +1,9 @@
 function onPressGetAll() {
     getAll("songs").then((res) => {
-        console.log(res.responseText);
         let songs = JSON.parse(res.responseText);
         removeAllChildren("resultTable");
         for (let s = 0; s < songs.length; s++) {
-            console.log("card start");
-            console.log(songs[s]);
-
             cardMaker(songMaker(songs[s]), "resultTable");
-            //fadeInCards("resultTable");
-            console.log("card made!");
-            console.log("It worked!");
         }
     }).catch(() => { console.log("Didn't work") });
 }
@@ -18,7 +11,6 @@ function onPressGetAll() {
 function onPressGetAllByAlbumID(object, aID) {
     getAll(object).then((res) => {
         let songs = JSON.parse(res.responseText);
-        console.log("working...")
         removeAllChildren("resultTable");
         for (let i = 0; i < songs.length; i++) {
             let s = songs[i];
@@ -41,6 +33,7 @@ function onPressGetAllByAlbumID(object, aID) {
 function onPressGet(object, id) {
     get(object, id).then((res) => {
         let s = JSON.parse(res.responseText);
+        console.log(s);
         removeAllChildren("resultTable");
         cardMaker(songMaker(s), "resultTable");
     }).catch(() => {
@@ -48,17 +41,32 @@ function onPressGet(object, id) {
     });
 }
 
-function onPressCreate(object, id, ){}
+function onPressCreate(object, id, sendData) {
+    let s = songMaker(0, sendData[0], sendData[1]);
+}
 
-function onPressUpdate(){}
+function onSearchName(name) {
+    getAll("songs").then((res) =>{
+        let songs = JSON.parse(res.responseText);
+        for(let i = 0; i < songs.length; i++){
+            let s = songs[i];
+            if(s.name = name){
+                onPressGet("song", s.id).then();
+            }
+        }
+    })
+}
 
-function onPressDelete(){}
+function onPressUpdate() { }
 
-function songMaker(id, name, albumID) {
+function onPressDelete() { }
+
+function songMaker(id, name, albumID, youtubeLink) {
     const song = {
         id: id,
         name: name,
-        albumID: albumID
+        albumID: albumID,
+        youtubeLink: youtubeLink
     }
     return song;
 }
@@ -67,7 +75,8 @@ function songMaker(songObj) {
     const song = {
         id: songObj.id,
         name: songObj.name,
-        albumID: songObj.albumID
+        albumID: songObj.albumID,
+        youtubeLink: songObj.youtubeLink
     }
     return song;
 }
@@ -75,14 +84,30 @@ function songMaker(songObj) {
 function cardMaker(song, id) {
     let card = document.createElement("div");
     card.innerHTML = `<div class="col-12">
-                    <div class="card">
+                    <div class="card w-100">
                     <div class="card-body">
-                        <h5 class="card-title">Song ${song.id}</h5>
-                        <p class="card-text">${song.name}</p>                   
+                        <h5 class="card-title">${song.name} <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" onclick="onClickUpdate()" align="right"></image></h5>                         
+                        <p class="card-text">ID: ${song.id}</p> 
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" onclick="youtubePopup('${song.name}', '${song.youtubeLink}')">
+                            Listen
+                        </button>                  
                     </div>
                     </div>
                 </div>`;
     document.getElementById(id).appendChild(card);
+}
+
+function youtubePopup(songName, songYoutubeLink) {
+    removeAllChildren("modalBodySong");
+    console.log(songName);
+    document.getElementById("modalTitle").innerText = songName;
+    console.log(document.getElementById("modalBodySong"));
+
+    let video = document.createElement("div");
+    songYoutubeLink = songYoutubeLink.replace("watch?v=", "embed/");
+    console.log(songYoutubeLink);
+    video.innerHTML = `<div><iframe width="450" height="325" src="${songYoutubeLink}"></iframe></div>`;
+    document.getElementById("modalBodySong").appendChild(video);
 }
 
 function removeAllChildren(id) {

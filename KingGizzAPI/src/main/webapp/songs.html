@@ -16,11 +16,11 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 
 <head>
-        <title>Songs</title>
+    <title>Songs</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-red" style="background-color: maroon">
         <a class="navbar-brand" href="index.html">King Gizzard and the Lizard Wizard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,22 +30,66 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="goTo('index')">Home<span class="sr-only" >(current)</span></a>
+                    <a class="nav-link" href="#" onclick="goTo('index')">Home<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" onsubmit="onSearch('searchinput')">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    id="searchInput">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
-    <div id="main-content">
+    <div class="container" id="main-content">
         <button onclick="onPressGetAll('songs')">Get all songs</button> <br>
-        <input type="number" id="num2" value=1></input><button onclick="onPressGetAllByAlbumID('songs', num2)">Get songs by album</button> 
+        <input type="number" id="num2" value=1></input><button onclick="onPressGetAllByAlbumID('songs', num2)">Get songs
+            by album</button>
         <br><br>
-        <input type="number" id="num1" value=1></input><button onclick="onPressGet('song', num1)">get song</button><br>
+        <input type="number" id="num1" value=1></input><button onclick="onPressGet('song', num1)">get
+            song</button><br><br>
         <div class="row" id="resultTable"></div>
+        <br>
+        <form onsubmit="onPressUpdate()">
+            <div class="container">
+                <h1>Update song</h1>
+                <hr>
+                <label for="accountNum"><b>Song ID</b></label>
+                <input type="number" placeholder="Enter Account No." id="inpID" value=1 required>
+
+                <label for="firstName"><b>Song Name</b></label>
+                <input type="text" placeholder="Enter First Name" id="inpName" required>
+
+                <label for="lastName"><b>Youtube video</b></label>
+                <input type="text" placeholder="Enter Last Name" id="inpYT" value=''>
+
+                <p>Album id:</p><input type="number" id="" value=1></input><button>Update
+                    account</button><br>
+                <hr>
+            </div>
+        </form>
     </div>
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Song title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBodySong">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="removeAllChildren('modalBodySong')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 <script src="api.js"></script>
 <script src="songs.js"></script>
