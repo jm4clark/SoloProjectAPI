@@ -140,15 +140,3 @@ function youtubePopup(songName, songYoutubeLink) {
     video.innerHTML = `<div><iframe width="450" height="325" src="${songYoutubeLink}" alt="no video..."></iframe></div>`;
     document.getElementById("modalBodySong").appendChild(video);
 }
-
-
-function getAllSongNames() {
-    return getAll("songs").then((res) => {
-        console.log(res.responseText);
-        let songs = JSON.parse(res.responseText);
-        let songNames;
-        for (let s = 0; s < songs.length; s++) {
-            songNames.push(songs[s].name);
-        }
-    }).catch(() => { console.log("Didn't work") });
-}
