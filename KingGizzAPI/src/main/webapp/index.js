@@ -1,4 +1,4 @@
-const searchResultsIndex = ["Songs", "Albums"];
+const editPencilSrc = "https://image.flaticon.com/icons/svg/61/61456.svg";
 
 function onLoadFunc() {
     addAlbumsToDropDown().then((res) => {

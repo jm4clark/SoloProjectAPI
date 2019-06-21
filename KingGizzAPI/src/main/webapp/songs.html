@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,11 +16,11 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 
 <head>
-        <title>Songs</title>
+    <title>Songs</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-red" style="background-color: rgb(145, 26, 26)">
         <a class="navbar-brand" href="index.html">King Gizzard and the Lizard Wizard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,22 +30,106 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="goTo('index')">Home<span class="sr-only" >(current)</span></a>
+                    <button class="nav-link btn btn-outline-danger my-2 my-sm-0" href="#" onclick="goTo('index')">Home<span class="sr-only">(current)</span></button>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" onsubmit="onSearch('searchinput')">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    id="searchInput">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
-    <div id="main-content">
-        <button onclick="onPressGetAllByAlbumID('songs', 8)">Get all songs</button> <br>
-        <input type="number" id="num1" value=1></input><button onclick="get('song', num1)">get song</button><br><br>
-        <button onclick="goTo('index')">Home</button>
-
-        <div class="row" id="resultTable"></div>
+    <div class="container" id="main-content">
+        <h3>Songs</h3>
+        <hr>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#getSongs">Find a song</h4>
+            <hr>
+            <div id="getSongs" class="collapse in">
+                <button onclick="onPressGetAll('songs')">Get all songs</button>
+                <button onclick="removeAllChildren('resultTable')">Clear results</button>
+                <br><br>
+                <input type="number" id="num2" value=1></input>
+                <button onclick="onPressGetAllByAlbumID('songs', num2)">Get songs by album</button>
+                <br><br>
+                <input type="number" id="num1" value=1></input>
+                <button type="button" class="btn-default" onclick="onPressGet('song', num1)">Get song</button><br><br>
+                <div class="row" id="resultTable"></div>
+                <br>
+            </div>
+        </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#createDiv">Create a song</h4>
+            <hr>
+            <div id="createDiv" class="collapse">
+                <label for="fname"><b>Song Name</b></label>
+                <input type="text" placeholder="Enter name..." size="50" id="inpCName" required>
+                <br><br>
+                <label for="ytVid"><b>Youtube video</b></label>
+                <input type="text" placeholder="Enter youtube url..." size="100" id="inpCYT" value=''>
+                <br><br>
+                <label for="album"><b>Album ID</b></label>
+                <input type="number" id="inpCAID" value=1></input>
+                <br><br>
+                <button onclick="onPressCreate(inpCName, inpCYT, inpCAID)" data-toggle="collapse"
+                    data-target="#createDiv">Create song</button><br>
+                <hr>
+            </div>
+        </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#updateDiv">Update a song</h4>
+            <hr>
+            <div id="updateDiv" class="collapse">
+                <label for="inpID"><b>Song ID</b></label>
+                <input type="number" placeholder="Enter Account No." id="inpID" value=1 required>
+                <br><br>
+                <label for="inpName"><b>Song Name</b></label>
+                <input type="text" id="inpName" placeholder="Enter name..." size="50" value="" required>
+                <br><br>
+                <label for="inpYT"><b>Youtube video</b></label>
+                <input type="text" placeholder="Enter youtube url..." size="100" id="inpYT" value=''>
+                <br><br>
+                <label for="album"><b>Album ID</b></label>
+                <input type="number" id="albID" value=1></input>
+                <br><br>
+                <button onclick="onPressUpdate(inpID, inpName, inpYT, albID)">Update song</button><br>
+                <hr>
+            </div>
+        </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#deleteDiv">Delete a song</h4>
+            <hr>
+            <div id="deleteDiv" class="collapse">
+                <label for="id"><b>Song ID</b></label>
+                <input type="number" placeholder="Enter Account No." id="DinpID" value=1 required>
+                <button onclick="onPressDelete(DinpID)">Delete song</button><br>
+                <hr>
+            </div>
+        </div>
     </div>
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Song title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBodySong">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="removeAllChildren('modalBodySong')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 <script src="api.js"></script>
 <script src="songs.js"></script>
