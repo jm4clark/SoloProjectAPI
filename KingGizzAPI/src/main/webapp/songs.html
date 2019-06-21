@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -39,10 +40,10 @@
         </div>
     </nav>
     <div id="main-content">
-        <button onclick="onPressGetAllByAlbumID('songs', 8)">Get all songs</button> <br>
-        <input type="number" id="num1" value=1></input><button onclick="get('song', num1)">get song</button><br><br>
-        <button onclick="goTo('index')">Home</button>
-
+        <button onclick="onPressGetAll('songs')">Get all songs</button> <br>
+        <input type="number" id="num2" value=1></input><button onclick="onPressGetAllByAlbumID('songs', num2)">Get songs by album</button> 
+        <br><br>
+        <input type="number" id="num1" value=1></input><button onclick="onPressGet('song', num1)">get song</button><br>
         <div class="row" id="resultTable"></div>
     </div>
 </body>
