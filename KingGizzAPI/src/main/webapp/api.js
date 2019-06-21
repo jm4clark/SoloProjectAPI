@@ -1,4 +1,4 @@
-const baseUrl =  "/KingGizzAPI/api/"; //http://34.90.83.75:8888/KingGizzAPI/api/"; //  //"http://localhost:8080/KingGizzAPI/api/"; http://35.246.178.250:8888/
+const baseUrl =  "KingGizzAPI/api/"; //http://34.90.83.75:8888/KingGizzAPI/api/"; //  //"http://localhost:8080/KingGizzAPI/api/"; http://35.246.178.250:8888/
 
 function makeRequest(requestType, url, sendData) {
     return new Promise((res, rej) => {
