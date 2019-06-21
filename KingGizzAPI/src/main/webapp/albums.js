@@ -6,10 +6,20 @@ function onPressGetAll() {
         console.log("removed children");
         for (let a = 0; a < albums.length; a++) {
             console.log("making card...");
-            albumCardMaker(albumMaker(albums[a].id, albums[a].name, albums[a].releaseDate, albums[a].albumArtLink), "albumResultTable");
+            albumCardMaker(albumMakerVals(albums[a].id, albums[a].name, albums[a].releaseDate, albums[a].albumArtLink), "albumResultTable");
             console.log("card made");
         }
     }).catch((res) => { console.log("get all Didn't work") });
+}
+
+function onPressGet(id){
+    console.log(id.value);
+    get("album", id).then((res)=>{
+        let a = JSON.parse(res.responseText);
+        console.log(a);
+        removeAllChildren("albumResultTable");
+        albumCardMaker(albumMaker(a), "albumResultTable");
+    }).catch(() => { console.log("didn't work")});
 }
 
 function albumCardMaker(album, id) {
@@ -24,7 +34,8 @@ function albumCardMaker(album, id) {
                         
                         </h5> 
                         <image class="thumbnail" src="${album.albumCover}">                        
-                        <p class="card-text">ID: ${album.id}</p>     
+                        <p class="card-text">ID: ${album.albumID}</p>     
+                        <p class="card-subtext">Release date: ${album.releaseDate}</p>
                     </div>
                     </div>
                 </div>`;
@@ -32,14 +43,22 @@ function albumCardMaker(album, id) {
     document.getElementById(id).appendChild(card);
 }
 
-function albumMaker(albumID, albumName, releaseDate, albumCover) {
-    console.log("making album");
+function albumMakerVals(albumID, albumName, releaseDate, albumCover) {
     const album = {
         albumID: albumID,
         albumName: albumName,
         releaseDate: releaseDate,
         albumCover: albumCover
     }
-    console.log(album);
+    return album;
+}
+
+function albumMaker(albumObj) {
+    const album = {
+        albumID: albumObj.id,
+        albumName: albumObj.name,
+        releaseDate: albumObj.releaseDate,
+        albumCover: albumObj.albumArtLink
+    }
     return album;
 }
