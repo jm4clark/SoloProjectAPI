@@ -1,4 +1,4 @@
-package com.bae.MapTests;
+package com.bae.persistence.repository;
 
 import static org.junit.Assert.*;
 

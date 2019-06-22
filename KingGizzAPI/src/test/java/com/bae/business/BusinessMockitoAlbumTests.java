@@ -13,7 +13,7 @@ import com.bae.business.AlbumServiceImpl;
 import com.bae.persistence.repository.AlbumDBRepo;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BusinessMockitoTests {
+public class BusinessMockitoAlbumTests {
 
 	@InjectMocks
 	private AlbumServiceImpl service;
