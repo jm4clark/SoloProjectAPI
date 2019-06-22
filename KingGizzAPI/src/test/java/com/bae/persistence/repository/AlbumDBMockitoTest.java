@@ -56,13 +56,12 @@ public class AlbumDBMockitoTest {
 
 	@Test
 	public void testGetOneAlbum() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Album> albums = new ArrayList<>();
 		albums.add(ALBUM_ONE);
 		albums.add(ALBUM_TWO);
-		Mockito.when(query.getSingleResult()).thenReturn(ALBUM_ONE);
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(ALBUM_ONE);
 
-		//Assert.assertEquals(util.getJSONForObject(ALBUM_ONE), repo.getAnAlbum(1));
+		Assert.assertEquals(util.getJSONForObject(ALBUM_ONE), repo.getAnAlbum(1));
 	}
 	
 	@Test
