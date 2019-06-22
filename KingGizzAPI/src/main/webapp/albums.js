@@ -20,13 +20,13 @@ function onPressGet(id) {
         let a = JSON.parse(res.responseText);
         console.log(a);
         removeAllChildren("albumResultTable");
-        let make= albumMaker(a);
+        let make = albumMaker(a);
         console.log(make);
         albumCardMaker(make, "albumResultTable");
     }).catch(() => { console.log("didn't work") });
 }
 
-function onPressCreateAlbum(name, release, cover) {
+function onPressCreate(name, release, cover) {
     console.log(cover.value);
     let album = albumMakerVals(0, name.value, release.value, cover.value);
     console.log(album);
@@ -35,23 +35,38 @@ function onPressCreateAlbum(name, release, cover) {
     }).catch(() => { console.log("Album not created..."); })
 }
 
-function onPressDelete(id){
-    deleteFunc("album", id.value).then(()=> {
+function onPressDelete(id) {
+    deleteFunc("album", id.value).then(() => {
         console.log("Deleted!");
     });
 }
 
+function onPressUpdate(oldID, newName, newDate, newCover) {
+    let newAlbum = albumMakerVals(oldID.value, newName.value, newDate.value, newCover.value);
+    console.log(newAlbum);
+    update("album", oldID.value, JSON.stringify(newAlbum)).then(() => {
+        console.log("Updated!");
+    })
+}
+
+function onClickUpdateIcon(id, name, date, cover) {
+    document.getElementById("updID").value = id;
+    document.getElementById("updName").value = name;
+    document.getElementById("updDate").value = date;
+    document.getElementById("updCover").value = cover;
+}
+
 function albumCardMaker(album, id) {
-    console.log(album);
-    console.log(album.albumCover);
     let card = document.createElement("div");
     card.innerHTML = `<div class="col-12">
                     <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title">${album.name} 
-                        <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDiv" onclick="onClickUpdateIcon(${album.albumID}, '${album.name}', '${album.releaseDate}')" align="right"></image>
-                        </h5> 
-                        <image class="thumbnail" src="${album.albumArtLink}">                        
+                        <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDivA" onclick="onClickUpdateIcon(${album.albumID}, '${album.name}', '${album.releaseDate}', '${album.albumArtLink}')" align="right"></image>
+                        </h5>
+                        <div class="albumPicDiv"> 
+                        <image class="thumbnail" src="${album.albumArtLink}">   
+                        </div>                     
                         <p class="card-text">ID: ${album.albumID}</p>     
                         <p class="card-subtext">Release date: ${album.releaseDate}</p>
                     </div>
@@ -61,12 +76,11 @@ function albumCardMaker(album, id) {
 }
 
 function albumMakerVals(iD, name, date, cover) {
-
     const album = {
         albumID: iD,
         name: name,
         releaseDate: date,
-        albumArtLink: cover
+        albumArtLink: cover,
     }
     console.log(album);
     return album;
@@ -79,6 +93,29 @@ function albumMaker(albumObj) {
         releaseDate: albumObj.releaseDate,
         albumArtLink: albumObj.albumArtLink
     }
-    console.log(album);
+
     return album;
+}
+
+function albumMakerWithSongs(albumObj) {
+    return getAll("songs").then((res) => {
+        let songs = JSON.parse(res.responseText);
+        let songList = [];
+        for (let i = 0; i < songs.length; i++) {
+            let s = songs[i];
+            if (s.albumID == albumObj.id) {
+                songList.push(s);
+            }
+        }
+        const album = {
+            albumID: albumObj.id,
+            name: albumObj.name,
+            releaseDate: albumObj.releaseDate,
+            albumArtLink: albumObj.albumArtLink,
+            songs: songList
+        }
+        console.log(album);
+        console.log(album.songs);
+        return album;
+    });
 }
