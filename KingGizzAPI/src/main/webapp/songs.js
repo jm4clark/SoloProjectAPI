@@ -60,6 +60,7 @@ function onSearchName(name) {
         }
     })
 }
+
 function onClickUpdateIcon(songID, songName, songYT, songAlbumID) {
     console.log("onclickupdate");
     console.log(document.getElementById("inpName").value);
@@ -108,21 +109,32 @@ function songMaker(songObj) {
 
 function cardMaker(song, id) {
     let card = document.createElement("div");
-    card.innerHTML = `<div class="col-12">
+    getAll("albums").then((res) => {
+        let albumName = "none";
+        let albums = JSON.parse(res.responseText);
+        for (let i = 0; i < albums.length; i++) {
+            let a = albums[i];
+            if (a.id == song.albumID) {
+                albumName = a.name;
+            }
+        }
+        card.innerHTML = `<div class="col-12">
                     <div class="card w-100">
                     <div class="card-body">
-                        <h5 class="card-title">${song.name} 
+                        <h5 class="card-title"><strong>${song.name}</strong>
                         <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDiv" onclick="onClickUpdateIcon(${song.id}, '${song.name}', '${song.youtubeLink}', ${song.albumID})" align="right"></image>
-                        
-                        </h5>                         
-                        <p class="card-text">ID: ${song.id}</p> 
+                        </h5>
+                        <p class="card-text"><strong>Album:</strong></p>
+                        <p class="card-text">${albumName}</p>
+                        <p class="card-text"><strong>ID:</strong> ${song.id}</p> 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" onclick="youtubePopup('${song.name}', '${song.youtubeLink}')">
                             Listen
                         </button>                  
                     </div>
                     </div>
                 </div>`;
-    document.getElementById(id).appendChild(card);
+        document.getElementById(id).appendChild(card);
+    });
 }
 
 function youtubePopup(songName, songYoutubeLink) {

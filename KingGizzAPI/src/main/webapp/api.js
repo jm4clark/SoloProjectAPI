@@ -18,7 +18,6 @@ function makeRequest(requestType, url, sendData) {
 
 function getAll(object) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    console.log(`${baseUrl}${object}/getAll${objectEnd}`);
     return makeRequest("GET", `${baseUrl}${object}/getAll${objectEnd}`);
 }
 
@@ -33,8 +32,6 @@ function get(object, id) {
 
 function create(object, sendData) {
     let objectEnd = object.charAt(0).toUpperCase() + object.substring(1);
-    console.log(`${baseUrl}${object}s/create${objectEnd}`);
-    console.log(sendData);
     return makeRequest("POST", `${baseUrl}${object}s/create${objectEnd}`, sendData)
     .then((res) => {
         console.log(res.responseText);
