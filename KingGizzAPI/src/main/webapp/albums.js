@@ -6,59 +6,79 @@ function onPressGetAll() {
         console.log("removed children");
         for (let a = 0; a < albums.length; a++) {
             console.log("making card...");
-            albumCardMaker(albumMakerVals(albums[a].id, albums[a].name, albums[a].releaseDate, albums[a].albumArtLink), "albumResultTable");
+            let album = albumMakerVals(albums[a].id, albums[a].name, albums[a].releaseDate, albums[a].albumArtLink);
+            console.log(album);
+            albumCardMaker(album, "albumResultTable");
             console.log("card made");
         }
-    }).catch((res) => { console.log("get all Didn't work") });
+    }).catch(() => { console.log("get all Didn't work") });
 }
 
-function onPressGet(id){
+function onPressGet(id) {
     console.log(id.value);
-    get("album", id).then((res)=>{
+    get("album", id).then((res) => {
         let a = JSON.parse(res.responseText);
         console.log(a);
         removeAllChildren("albumResultTable");
-        albumCardMaker(albumMaker(a), "albumResultTable");
-    }).catch(() => { console.log("didn't work")});
+        let make= albumMaker(a);
+        console.log(make);
+        albumCardMaker(make, "albumResultTable");
+    }).catch(() => { console.log("didn't work") });
+}
+
+function onPressCreateAlbum(name, release, cover) {
+    console.log(cover.value);
+    let album = albumMakerVals(0, name.value, release.value, cover.value);
+    console.log(album);
+    create("album", JSON.stringify(album)).then(() => {
+        console.log("Album created!");
+    }).catch(() => { console.log("Album not created..."); })
+}
+
+function onPressDelete(id){
+    deleteFunc("album", id.value).then(()=> {
+        console.log("Deleted!");
+    });
 }
 
 function albumCardMaker(album, id) {
-
-    console.log("got here card")
+    console.log(album);
+    console.log(album.albumCover);
     let card = document.createElement("div");
     card.innerHTML = `<div class="col-12">
                     <div class="card w-100">
                     <div class="card-body">
-                        <h5 class="card-title">${album.albumName} 
-                        <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDiv" onclick="onClickUpdateIcon(${album.albumID}, '${album.albumName}', '${album.releaseDate}')" align="right"></image>
-                        
+                        <h5 class="card-title">${album.name} 
+                        <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDiv" onclick="onClickUpdateIcon(${album.albumID}, '${album.name}', '${album.releaseDate}')" align="right"></image>
                         </h5> 
-                        <image class="thumbnail" src="${album.albumCover}">                        
+                        <image class="thumbnail" src="${album.albumArtLink}">                        
                         <p class="card-text">ID: ${album.albumID}</p>     
                         <p class="card-subtext">Release date: ${album.releaseDate}</p>
                     </div>
                     </div>
                 </div>`;
-    console.log(document.getElementById(id));
     document.getElementById(id).appendChild(card);
 }
 
-function albumMakerVals(albumID, albumName, releaseDate, albumCover) {
+function albumMakerVals(iD, name, date, cover) {
+
     const album = {
-        albumID: albumID,
-        albumName: albumName,
-        releaseDate: releaseDate,
-        albumCover: albumCover
+        albumID: iD,
+        name: name,
+        releaseDate: date,
+        albumArtLink: cover
     }
+    console.log(album);
     return album;
 }
 
 function albumMaker(albumObj) {
     const album = {
         albumID: albumObj.id,
-        albumName: albumObj.name,
+        name: albumObj.name,
         releaseDate: albumObj.releaseDate,
-        albumCover: albumObj.albumArtLink
+        albumArtLink: albumObj.albumArtLink
     }
+    console.log(album);
     return album;
 }

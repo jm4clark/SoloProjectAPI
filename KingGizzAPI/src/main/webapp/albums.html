@@ -42,66 +42,71 @@
     </nav>
 
     <div class="container" id="main-content">
-            <h3>Albums</h3>
+        <h3>Albums</h3>
+        <hr>
+        <div class="container" style="overflow-y: auto">
+            <h4>Find an album</h4>
             <hr>
-            <div class="container" style="overflow-y: auto">
-                <h4>Find an album</h4>
-                <hr>
-                <div>
-                    <button onclick="onPressGetAll()">Get all albums</button>
-                    <button onclick="removeAllChildren('albumResultTable')">Clear results</button>
-                    <br><br>
-                    <input type="number" id="inputNum" value=1></input>
-                    <button type="button" class="btn-default" onclick="onPressGet(inputNum)">Get an album</button><br><br>
-                    <div class="row" id="albumResultTable"></div>
-                    <br>
-                </div>
-            </div>
-            <div class="container">
-                <h4 data-toggle="collapse" data-target="#createDivA">Create an album</h4>
-                <hr>
-                <div id="createDivA" class="collapse">
-                    <label for="fname"><strong>Album Name</strong></label>
-                    <input type="text" placeholder="Enter name..." size="50" id="inpCNameA" required>
-                    <br><br>
-                    <label for="album"><strong>Album Cover</strong></label>
-                    <input type="number" id="inpCAID" value=1></input>
-                    <br><br>
-                    <button onclick="onPressCreate(inpCNameA, inpCYTA, inpCAID)">Create album</button><br>
-                    <hr>
-                </div>
-            </div>
-            <div class="container">
-                <h4 data-toggle="collapse" data-target="#updateDivA">Update a album</h4>
-                <hr>
-                <div id="updateDivA" class="collapse">
-                    <label for="inpID"><strong>album ID</strong></label>
-                    <input type="number" placeholder="Enter Account No." id="inpID" value=1 required>
-                    <br><br>
-                    <label for="inpName"><strong>album Name</strong></label>
-                    <input type="text" id="inpName" placeholder="Enter name..." size="50" value="" required>
-                    <br><br>
-                    <label for="inpYT"><strong>Youtube video</strong></label>
-                    <input type="text" placeholder="Enter youtube url..." size="100" id="inpYT" value=''>
-                    <br><br>
-                    <label for="album"><strong>Album ID</strong></label>
-                    <input type="number" id="albID" value=1></input>
-                    <br><br>
-                    <button onclick="onPressUpdate(inpID, inpName, inpYT, albID)">Update album</button><br>
-                    <hr>
-                </div>
-            </div>
-            <div class="container">
-                <h4 data-toggle="collapse" data-target="#deleteDivA">Delete a album</h4>
-                <hr>
-                <div id="deleteDivA" class="collapse">
-                    <label for="id"><strong>album ID</strong></label>
-                    <input type="number" placeholder="Enter Account No." id="DinpID" value=1 required>
-                    <button onclick="onPressDelete(DinpID)">Delete album</button><br>
-                    <hr>
-                </div>
+            <div>
+                <button onclick="onPressGetAll()">Get all albums</button>
+                <button onclick="removeAllChildren('albumResultTable')">Clear results</button>
+                <br><br>
+                <input type="number" id="inputNum" value=1></input>
+                <button type="button" class="btn-default" onclick="onPressGet(inputNum)">Get an album</button><br><br>
+                <div class="row" id="albumResultTable"></div>
+                <br>
             </div>
         </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#createDivA">Create an album</h4>
+            <hr>
+            <div id="createDivA" class="collapse">
+                <label for="inpNameA"><strong>Album Name</strong></label>
+                <input type="text" placeholder="Enter name..." size="50" id="inpNameA" required>
+                <br><br>
+                <label for="inpDate"><strong>Release date</strong></label>
+                <input type="date" id="inpDate" required></input>
+                <br><br>
+                <label for="inpCover"><strong>Album Cover</strong></label>
+                <input type="text" id="inpCover" placeholder="Enter link to image..." size="100" value=''></input>
+                <br><br>
+                <button onclick="onPressCreateAlbum(inpNameA, inpDate, inpCover)">Create album</button><br>
+                <hr>
+            </div>
+        </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#updateDivA">Update an album</h4>
+            <hr>
+            <div id="updateDivA" class="collapse">
+                <label for="inpID"><strong>album ID</strong></label>
+                <input type="number" placeholder="Enter Account No." id="inpID" value=1 required>
+                <br><br>
+                <label for="inpName"><strong>album Name</strong></label>
+                <input type="text" id="inpName" placeholder="Enter name..." size="50" value="" required>
+                <br><br>
+                <label for="inpYT"><strong>Youtube video</strong></label>
+                <input type="text" placeholder="Enter youtube url..." size="100" id="inpYT" value=''>
+                <br><br>
+                <label for="album"><strong>Album ID</strong></label>
+                <input type="number" id="albID" value=1></input>
+                <br><br>
+                <button onclick="onPressUpdate(inpID, inpName, inpYT, albID)">Update album</button><br>
+                <hr>
+            </div>
+        </div>
+        <div class="container">
+            <h4 data-toggle="collapse" data-target="#deleteDivA">Delete an album</h4>
+            <hr>
+            <div id="deleteDivA" class="collapse">
+                <label for="id"><strong>album ID</strong></label>
+                <input type="number" id="DinpAlbumID" value=1 required>
+                <button onclick="onPressDelete(DinpAlbumID)">Delete album</button>
+                <a id="deleteAlbumResult"></a>
+                <br>
+                <hr>
+            </div>
+        </div>
+    </div>
 
     <!-- <div id="main-content">
         <div class="h-75 d-inline-block" id="albumContainer">
