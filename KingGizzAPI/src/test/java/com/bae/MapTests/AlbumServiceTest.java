@@ -33,6 +33,12 @@ public class AlbumServiceTest {
 	}
 	
 	@Test
+	public void getAnAlbumTest() {
+		repo.getAlbumMap().put(1, alb1);
+		assertEquals(util.getJSONForObject(alb1), repo.getAnAlbum(1));
+	}
+	
+	@Test
 	public void addAlbumTest() {
 		String newAlbum = util.getJSONForObject(alb1);
 		assertEquals(repo.createAlbum(newAlbum), util.messageToJSON("Album successfully created!"));
