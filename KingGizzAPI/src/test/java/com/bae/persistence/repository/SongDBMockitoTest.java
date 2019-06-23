@@ -34,8 +34,8 @@ public class SongDBMockitoTest {
 
 	private List<Song> songs;
 
-	public static final Song SONG_ONE = new Song("Robot Stop");
-	public static final Song SONG_TWO = new Song("Gamma Knife");
+	public static final Song SONG_ONE = new Song(1, "Robot Stop", 8, "youtube");
+	public static final Song SONG_TWO = new Song(3, "Gamma Knife", 8, "youtube");
 
 	@Before
 	public void setup() {
@@ -100,7 +100,7 @@ public class SongDBMockitoTest {
 		Mockito.when(manager.merge(SONG_TWO)).thenReturn(SONG_TWO);
 
 		Assert.assertEquals(util.messageToJSON("Song successfully updated"),
-				repo.updateSong(1, util.getJSONForObject(SONG_TWO)));
+				repo.updateSong(SONG_ONE.getId(), util.getJSONForObject(SONG_TWO)));
 	}
 
 	@Test
@@ -108,7 +108,7 @@ public class SongDBMockitoTest {
 		Mockito.when(manager.find(Song.class, 1)).thenReturn(null);
 
 		Assert.assertEquals(util.messageToJSON("no song to update"),
-				repo.updateSong(1, util.getJSONForObject(SONG_TWO)));
+				repo.updateSong(SONG_ONE.getId(), util.getJSONForObject(SONG_TWO)));
 	}
 
 }

@@ -1,4 +1,4 @@
-const baseUrl =  "http://localhost:8080/KingGizzAPI/api/"; //http://34.90.83.75:8888/KingGizzAPI/api/"; //  //"http://localhost:8080/KingGizzAPI/api/"; http://35.246.178.250:8888/
+const baseUrl =  "/KingGizzAPI/api/"; //http://34.90.83.75:8888/KingGizzAPI/api/"; //  //"http://localhost:8080/KingGizzAPI/api/"; http://35.246.178.250:8888/
 
 function makeRequest(requestType, url, sendData) {
     return new Promise((res, rej) => {
@@ -57,18 +57,6 @@ function deleteFunc(object, id){
 
 function goTo(address) {
     window.location.href = `${address}.html`;
-}
-
-function cardMaker(album, id) {
-    let card = document.createElement("div");
-    card.innerHTML = `<div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="profile${account.id}.jpg" onerror="this.onerror=null; this.src='defaultpic.jpg'" alt="no profile picture found">
-                <div class="card-body">
-                    <h5 class="card-title">Account ${account.accountNumber}</h5>
-                    <p class="card-text">${account.firstName} ${account.lastName}</p>                   
-                </div>
-            </div>`;
-    document.getElementById(id).appendChild(card);
 }
 
 function removeAllChildren(id) {
