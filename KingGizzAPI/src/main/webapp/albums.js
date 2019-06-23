@@ -59,7 +59,7 @@ function onClickUpdateIcon(id, name, date, cover) {
 function albumCardMaker(album, id) {
     let card = document.createElement("div");
     card.innerHTML = `<div class="col-12">
-                    <div class="card w-100">
+                    <div class="card bg-dark text-white w-100">
                     <div class="card-body">
                         <h5 class="card-title">${album.name} 
                         <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDivA" onclick="onClickUpdateIcon(${album.albumID}, '${album.name}', '${album.releaseDate}', '${album.albumArtLink}')" align="right"></image>
