@@ -32,22 +32,27 @@ public class AlbumDBMockitoTest {
 	@Mock
 	private JSONUtil util;
 
-	public static final Album ALBUM_ONE = new Album(1, "Nonagon Infinity", "whenever", "https://images-na.ssl-images-amazon.com/images/I/81OzrxuWtGL._SY355_.jpg");
-	public static final Album ALBUM_TWO = new Album(2, "Quarters!", "awhileago", "https://f4.bcbits.com/img/a3796441552_10.jpg");
+	private List<Album> albums;
+
+	public static final Album ALBUM_ONE = new Album(1, "Nonagon Infinity", "whenever",
+			"https://images-na.ssl-images-amazon.com/images/I/81OzrxuWtGL._SY355_.jpg");
+	public static final Album ALBUM_TWO = new Album(2, "Quarters!", "awhileago",
+			"https://f4.bcbits.com/img/a3796441552_10.jpg");
 
 	@Before
 	public void setup() {
 		repo.setManager(manager);
 		util = new JSONUtil();
 		repo.setJSON(util);
+		albums = new ArrayList<>();
 	}
 
 	@Test
 	public void testGetAll() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<Album> albums = new ArrayList<>();
 		albums.add(ALBUM_ONE);
 		albums.add(ALBUM_TWO);
+
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		Mockito.when(query.getResultList()).thenReturn(albums);
 
 		Assert.assertEquals("[" + util.getJSONForObject(ALBUM_ONE) + "," + util.getJSONForObject(ALBUM_TWO) + "]",
@@ -56,41 +61,56 @@ public class AlbumDBMockitoTest {
 
 	@Test
 	public void testGetOneAlbum() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<Album> albums = new ArrayList<>();
 		albums.add(ALBUM_ONE);
 		albums.add(ALBUM_TWO);
-		Mockito.when(query.getSingleResult()).thenReturn(ALBUM_ONE);
 
-		//Assert.assertEquals(util.getJSONForObject(ALBUM_ONE), repo.getAnAlbum(1));
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(ALBUM_ONE);
+
+		Assert.assertEquals(util.getJSONForObject(ALBUM_ONE), repo.getAnAlbum(1));
 	}
-	
+
 	@Test
 	public void testCreateAlbum() {
-		//Mockito.when(manager.find(Album.class, 1)).thenReturn();
-		
+		Mockito.when(manager.merge(ALBUM_ONE)).thenReturn(ALBUM_ONE);
+
+		Assert.assertEquals(util.messageToJSON("album successfully added"),
+				repo.createAlbum(util.getJSONForObject(ALBUM_ONE)));
 	}
-	
+
 	@Test
 	public void testDeleteAlbum() {
-		
+		albums.add(ALBUM_ONE);
+		Mockito.when(manager.contains(manager.find(Album.class, 1))).thenReturn(true);
+
+		Assert.assertEquals(util.messageToJSON("album successfully deleted"), repo.deleteAlbum(1));
 	}
-	
+
 	@Test
 	public void testDeleteAlbumInvalid() {
-		
+		Mockito.when(manager.contains(manager.find(Album.class, 1))).thenReturn(false);
+
+		Assert.assertEquals(util.messageToJSON("no album to delete"), repo.deleteAlbum(1));
 	}
-	
+
 	@Test
 	public void testUpdateAlbum() {
-		
+
+		albums.add(ALBUM_ONE);
+
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(ALBUM_ONE);
+
+		Mockito.when(manager.merge(ALBUM_TWO)).thenReturn(ALBUM_TWO);
+
+		Assert.assertEquals(util.messageToJSON("album successfully updated"),
+				repo.updateAlbum(ALBUM_ONE.getId(), util.getJSONForObject(ALBUM_TWO)));
 	}
-	
+
 	@Test
 	public void testUpdateAlbumInvalid() {
-		
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(null);
+
+		Assert.assertEquals(util.messageToJSON("no album to update"),
+				repo.updateAlbum(ALBUM_ONE.getId(), util.getJSONForObject(ALBUM_TWO)));
 	}
-	
-	
 
 }

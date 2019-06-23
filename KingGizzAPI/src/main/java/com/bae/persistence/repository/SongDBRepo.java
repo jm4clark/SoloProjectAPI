@@ -69,4 +69,13 @@ public class SongDBRepo implements SongRepository{
 		
 		return util.messageToJSON("no song to update");
 	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+	
+	public void setJSON(JSONUtil util) {
+		this.util = util;
+	}
+	
 }

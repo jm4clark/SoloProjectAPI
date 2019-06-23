@@ -12,9 +12,9 @@ import com.bae.util.JSONUtil;
 public class AlbumMapRepo implements AlbumRepository {
 
 	private Map<Integer, Album> albumMap = new HashMap<>();
-	
+
 	private JSONUtil util = new JSONUtil();
-	
+
 	@Override
 	public String getAllAlbums() {
 		return util.getJSONForObject(albumMap);
@@ -34,15 +34,25 @@ public class AlbumMapRepo implements AlbumRepository {
 
 	@Override
 	public String deleteAlbum(int id) {
-		albumMap.remove(id);
-		return util.messageToJSON("Album successfully deleted!");
+		if (albumMap.containsKey(id)) {
+			albumMap.remove(id);
+			return util.messageToJSON("Album successfully deleted!");
+		}
+		return util.messageToJSON("No album to delete...");
 	}
 
 	@Override
 	public String updateAlbum(int id, String album) {
-		Album newAlbum = util.getObjectForJSON(album, Album.class);
-		albumMap.put(id, newAlbum);
-		return util.messageToJSON("Album successfully updated!");
+		if (albumMap.containsKey(id)) {
+			Album newAlbum = util.getObjectForJSON(album, Album.class);
+			albumMap.put(id, newAlbum);
+			return util.messageToJSON("Album successfully updated!");
+		}
+		return util.messageToJSON("No album to update...");
+	}
+
+	public Map<Integer, Album> getAlbumMap() {
+		return albumMap;
 	}
 
 }
