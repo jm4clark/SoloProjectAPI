@@ -119,7 +119,7 @@ function cardMaker(song, id) {
             }
         }
         card.innerHTML = `<div class="col-12">
-                    <div class="card w-100">
+                    <div class="card bg-dark text-white w-100">
                     <div class="card-body">
                         <h5 class="card-title"><strong>${song.name}</strong>
                         <image src="https://image.flaticon.com/icons/svg/61/61456.svg" style="height: 20px; width: 20px" data-toggle="collapse" data-target="#updateDiv" onclick="onClickUpdateIcon(${song.id}, '${song.name}', '${song.youtubeLink}', ${song.albumID})" align="right"></image>
