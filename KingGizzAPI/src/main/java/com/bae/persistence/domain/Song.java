@@ -18,7 +18,8 @@ public class Song {
 	
 	public Song() {}
 	
-	public Song(String name) {
+	public Song(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 	

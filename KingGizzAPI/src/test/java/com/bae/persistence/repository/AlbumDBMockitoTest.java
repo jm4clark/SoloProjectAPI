@@ -93,21 +93,24 @@ public class AlbumDBMockitoTest {
 	}
 
 	@Test
-	@Ignore
 	public void testUpdateAlbum() {
 
 		albums.add(ALBUM_ONE);
-		
-		Mockito.when(manager.find(Album.class, 2)).thenReturn(ALBUM_TWO);
-		
-		Mockito.when(manager.merge(ALBUM_ONE)).thenReturn(ALBUM_ONE);
-		
-		Assert.assertEquals(util.messageToJSON("album successfully updated"), repo.updateAlbum(ALBUM_ONE.getId(), util.getJSONForObject(ALBUM_TWO)));
+
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(ALBUM_ONE);
+
+		Mockito.when(manager.merge(ALBUM_TWO)).thenReturn(ALBUM_TWO);
+
+		Assert.assertEquals(util.messageToJSON("album successfully updated"),
+				repo.updateAlbum(ALBUM_ONE.getId(), util.getJSONForObject(ALBUM_TWO)));
 	}
 
 	@Test
 	public void testUpdateAlbumInvalid() {
+		Mockito.when(manager.find(Album.class, 1)).thenReturn(null);
 
+		Assert.assertEquals(util.messageToJSON("no album to update"),
+				repo.updateAlbum(ALBUM_ONE.getId(), util.getJSONForObject(ALBUM_TWO)));
 	}
 
 }
