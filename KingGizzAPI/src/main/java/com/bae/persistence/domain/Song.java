@@ -18,8 +18,11 @@ public class Song {
 	
 	public Song() {}
 	
-	public Song(String name) {
+	public Song(int id, String name, int albumID, String youtubeLink) {
+		this.id = id;
 		this.name = name;
+		this.albumID = albumID;
+		this.youtubeLink = youtubeLink;
 	}
 	
 	public String getName() {
